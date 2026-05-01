@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Track Meet Manager</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .nav { margin-bottom: 20px; }
+        .delete-btn { color: red; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <h1>Track Meet Leaderboard</h1>
+    <div class="nav">
+        <a href="/add_athlete">Add New Athlete</a> | 
+        <a href="/add_result">Add New Result</a> | 
+        <a href="/filter_athletes">Search Athletes by Age</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Athlete</th>
+                <th>Event</th>
+                <th>Meet</th>
+                <th>Time (s)</th>
+                <th>Place</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in results %}
+            <tr>
+                <td>{{ row.athlete_name }}</td>
+                <td>{{ row.event_name }}</td>
+                <td>{{ row.meet_name }}</td>
+                <td>{{ row.final_time }}</td>
+                <td>{{ row.calculated_place }}</td>
+                <td>
+                    <a href="/edit_result/{{ row.result_id }}">Edit</a> | 
+                    <a href="/delete_result/{{ row.result_id }}" onclick="return confirm('Delete?')">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Athlete Report</title>
+    <style>body { font-family: sans-serif; margin: 40px; } table { border-collapse: collapse; width: 50%; } th, td { border: 1px solid #ddd; padding: 8px; }</style>
+</head>
+<body>
+    <h2>Filter Athletes by Age Range</h2>
+    <form action="/filter_athletes" method="GET">
+        Min Age: <input type="number" name="min_age" value="{{ min_age }}">
+        Max Age: <input type="number" name="max_age" value="{{ max_age }}">
+        <button type="submit">Filter</button>
+    </form>
+
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for athlete in athletes %}
+            <tr>
+                <td>{{ athlete.name }}</td>
+                <td>{{ athlete.age }}</td>
+                <td>{{ athlete.gender }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>

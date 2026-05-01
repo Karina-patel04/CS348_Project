@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Result</title>
+</head>
+<body>
+    <h2>Edit Result for {{ result.athlete_name }}</h2>
+    <p>Event: {{ result.event_name }}</p>
+    
+    <form method="POST">
+        <label>Final Time (s):</label>
+        <br>
+        <input type="number" step="0.01" name="final_time" value="{{ result.final_time }}">
+        <br>
+        <br>
+        <button type="submit">Update Result</button>
+    </form>
+    
+    <br>
+    <a href="/">Cancel</a>
+</body>
+</html>

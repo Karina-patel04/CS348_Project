@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Athlete</title>
+    <style>body { font-family: sans-serif; margin: 40px; } label { display: block; margin-top: 10px; }</style>
+</head>
+<body>
+    <h2>Register New Athlete</h2>
+    <form method="POST">
+        <label>Full Name:</label>
+        <input type="text" name="name" required>
+
+        <label>Age:</label>
+        <input type="number" name="age" required>
+
+        <label>Gender:</label>
+        <select name="gender">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+
+        <label>Team (Dynamic List from DB):</label>
+        <select name="team_id">
+            {% for team in teams %}
+                <option value="{{ team.team_id }}">{{ team.name }}</option>
+            {% endfor %}
+        </select>
+
+        <br><br>
+        <button type="submit">Save Athlete</button>
+    </form>
+    <p><a href="/">Back to Home</a></p>
+</body>
+</html>
